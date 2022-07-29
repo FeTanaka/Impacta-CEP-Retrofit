@@ -41,13 +41,13 @@ class HomeFragment : Fragment() {
 
                 chamada.enqueue(object : Callback<CEP>{
                     override fun onResponse(call: Call<CEP>, response: Response<CEP>) {
-                        response.body()?.let {
-                            binding.textView.text = it.toString()
+                        response.body()?.let { cep ->
+                            binding.textView.text = cep.logradouro
                         }
                     }
 
                     override fun onFailure(call: Call<CEP>, t: Throwable) {
-                        Log.e("IMPACTA", t.printStackTrace().toString())
+                        Log.e("IMPACTA", t.stackTraceToString())
                     }
 
                 })
